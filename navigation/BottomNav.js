@@ -11,6 +11,7 @@ const Tab = createBottomTabNavigator()
 export default function BottomNav() {
   return (
     <Tab.Navigator
+      safeAreaInsets={{ bottom: 10 }}
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName
