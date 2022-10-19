@@ -1,8 +1,10 @@
 import * as React from 'react'
 
-import { View, Text, StyleSheet } from 'react-native'
+import { View, ScrollView, Text, StyleSheet } from 'react-native'
 
-import { Button } from '../components'
+import { cups } from '../data/mock'
+
+import { Card } from '../components'
 
 const handlePress = () => {
   console.log('Button pressed')
@@ -11,8 +13,11 @@ const handlePress = () => {
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Button title={'Go to Details'} cb={handlePress} />
+      <ScrollView style={styles.cardContainer}>
+        {cups.map((cup) => {
+          return <Card key={cup.id} cup={cup} />
+        })}
+      </ScrollView>
     </View>
   )
 }
@@ -20,7 +25,15 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  cardContainer: {
+    flex: 1,
+    width: '100%',
+    backgroundColor: '#fafafa',
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
 })
